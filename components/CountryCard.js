@@ -16,7 +16,7 @@ const BackButton = styled.button`
 `
 
 const Image = styled.div`
-    background-image: url(${props => props.img});
+    background-image: url(${props => props?.img});
     background-position: center;
     background-size: cover;
     width: 500px;
@@ -45,16 +45,16 @@ function CountryCard(props) {
                     </div>
                     <div style={{ display: "flex", minWidth: 500,  justifyContent: "space-between"}}>
                         <div>
-                            <p>Native Name: {props.country[0]["nativeName"]}</p>
-                            <p>Population: {props.country[0]["population"]}</p>
-                            <p>Region: {props.country[0]["region"]}</p>
-                            <p>Sub Region: {props.country[0]["subregion"]}</p>
-                            <p>Capital: {props.country[0]["capital"]}</p>
+                            <p>Native Name: {props?.country[0]["nativeName"]}</p>
+                            <p>Population: {props?.country[0]["population"]}</p>
+                            <p>Region: {props?.country[0]["region"]}</p>
+                            <p>Sub Region: {props?.country[0]["subregion"]}</p>
+                            <p>Capital: {props?.country[0]["capital"]}</p>
                         </div>
                         <div>
-                            <p>Top Level Domain: {props.country[0]["topLevelDomain"]}</p>
-                            <p>Currencies: {props.country[0]["currencies"].map(currency => currency.code)}</p>
-                            <p>Languages: {props.country[0]["languages"].map(language => language.name + ", ")}</p>
+                            <p>Top Level Domain: {props?.country[0]["topLevelDomain"]}</p>
+                            <p>Currencies: {props?.country[0]["currencies"].map(currency => currency.code)}</p>
+                            <p>Languages: {props?.country[0]["languages"].map(language => language.name + ", ")}</p>
                         </div>
                     </div>
                 </InformationContainer>

@@ -17,7 +17,7 @@ function Home(props) {
             <main className={styles.main}>
                 <Header />
                 <SearchInput />
-                <CountryList countries={props.countries} />
+                <CountryList countries={props?.countries} />
             </main>
 
             <footer className={styles.footer}>

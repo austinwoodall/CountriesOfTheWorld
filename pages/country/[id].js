@@ -18,7 +18,7 @@ function Country(props) {
 
             <main className={styles.main}>
                 <Header />
-                <CountryCard country={props.country} />
+                <CountryCard country={props?.country} />
             </main>
 
             <footer className={styles.footer}>

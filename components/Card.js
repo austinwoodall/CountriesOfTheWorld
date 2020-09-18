@@ -13,7 +13,7 @@ const ImageContainer = styled.div`
     width: 100%;
 `
 const Image = styled.div`
-    background-image: url(${props => props.img});
+    background-image: url(${props => props?.img});
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -31,15 +31,15 @@ export default function Card(props) {
     const router = useRouter();
 
     return (
-        <Container style={{ cursor: "pointer" }} onClick={() => router.push(`/country/${props.country["capital"]}`)}>
+        <Container style={{ cursor: "pointer" }} onClick={() => router.push(`/country/${props?.country["capital"]}`)}>
             <ImageContainer>
-                <Image img={props.country["flag"]}  alt={props.country["flag"]}/>
+                <Image img={props?.country["flag"]}  alt={props?.country["flag"]}/>
             </ImageContainer>
             <InfoContainer>
-                <h3>{props.country.name}</h3>
-                <p>Population: {props.country["population"]}</p>
-                <p>Region: {props.country.region}</p>
-                <p>Capital: {props.country["capital"]}</p>
+                <h3>{props?.country.name}</h3>
+                <p>Population: {props?.country["population"]}</p>
+                <p>Region: {props?.country.region}</p>
+                <p>Capital: {props?.country["capital"]}</p>
             </InfoContainer>
         </Container>
     )
