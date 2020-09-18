@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "../../styles/Home.module.css";
 import Head from "next/head";
 import Header from "../../components/Header";
-import SearchInput from "../../components/Filters";
-import CountryList from "../../components/CountryList";
 import {useRouter} from "next/router";
 import axios from "axios";
 import {url} from "../../utils/config";
+import CountryCard from "../../components/CountryCard";
 
-function Country() {
-    const router = useRouter();
-    const [country, setCountry] = useState(null)
-
-    useEffect(() => {
-        getCountryInfo().then(res => setCountry(res.data))
-    }, [])
-
-    const getCountryInfo = async () => {
-        const countryData = await axios.get(`${url}${router.query.id}`);
-        return countryData;
-    }
+function Country(props) {
 
     return (
         <div className={styles.container}>
@@ -30,6 +18,7 @@ function Country() {
 
             <main className={styles.main}>
                 <Header />
+                <CountryCard country={props.country} />
             </main>
 
             <footer className={styles.footer}>
@@ -44,6 +33,33 @@ function Country() {
             </footer>
         </div>
     )
+}
+
+export async function getStaticPaths() {
+
+    const countriesData = await axios.get(`${url}all`);
+    const countries = await countriesData.data
+
+    const paths = countries.map((country) => ({
+        params: { id: country.name },
+    }))
+
+    return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+    // Call an external API endpoint to get posts.
+    // You can use any data fetching library
+    const countryData = await axios.get(`${url}name/${params.id}`);
+    const country = await countryData.data
+
+    // By returning { props: posts }, the Blog component
+    // will receive `posts` as a prop at build time
+    return {
+        props: {
+            country,
+        },
+    }
 }
 
 export default Country;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
     width: 250px;
@@ -12,11 +12,16 @@ const Container = styled.div`
 const ImageContainer = styled.div`
     width: 100%;
 `
-const Image = styled.img`
+const Image = styled.div`
+    background-image: url(${props => props.img});
+    background-position: center;
+    background-size: cover;
     width: 100%;
+    height: 180px;
     object-fit: contain;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
 `
 const InfoContainer = styled.div`
     padding: 10px 20px;
@@ -28,7 +33,7 @@ export default function Card(props) {
     return (
         <Container style={{ cursor: "pointer" }} onClick={() => router.push(`/country/${props.country.name}`)}>
             <ImageContainer>
-                <Image src={props.country["flag"]}  alt={props.country["flag"]}/>
+                <Image img={props.country["flag"]}  alt={props.country["flag"]}/>
             </ImageContainer>
             <InfoContainer>
                 <h3>{props.country.name}</h3>

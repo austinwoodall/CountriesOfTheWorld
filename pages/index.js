@@ -3,8 +3,10 @@ import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 import SearchInput from "../components/Filters";
 import CountryList from "../components/CountryList";
+import axios from "axios";
+import {url} from "../utils/config";
 
-function Home() {
+function Home(props) {
     return (
         <div className={styles.container}>
             <Head>
@@ -15,7 +17,7 @@ function Home() {
             <main className={styles.main}>
                 <Header />
                 <SearchInput />
-                <CountryList />
+                <CountryList countries={props.countries} />
             </main>
 
             <footer className={styles.footer}>
@@ -30,6 +32,22 @@ function Home() {
             </footer>
         </div>
     );
+}
+
+
+export async function getStaticProps() {
+    // Call an external API endpoint to get posts.
+    // You can use any data fetching library
+    const countriesData = await axios.get(`${url}all`);
+    const countries = await countriesData.data
+
+    // By returning { props: posts }, the Blog component
+    // will receive `posts` as a prop at build time
+    return {
+        props: {
+            countries,
+        },
+    }
 }
 
 export default Home;

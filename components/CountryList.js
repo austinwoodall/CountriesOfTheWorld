@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import {url} from "../utils/config";
+import React from "react";
 import Card from "./Card";
 
-export default function CountryList() {
-    const [countries, setCountries] = useState(null);
-
-    useEffect(() => {
-        getCountries().then(res => setCountries(res.data))
-    }, [])
-
-    const getCountries = async () => {
-        const countriesData = await axios.get(`${url}all`);
-       return countriesData;
-    }
-
-    console.log(countries)
-
+export default function CountryList(props) {
+    console.log(props)
     return (
         <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "center", flexWrap: "wrap" }}>
             {
-                countries?.map(country => {
-                        return <Card country={country}/>
+                props.countries?.map((country) => {
+                        return <Card key={country.name} country={country}/>
                     })
             }
         </div>
