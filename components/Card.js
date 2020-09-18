@@ -6,14 +6,17 @@ const Container = styled.div`
     width: 250px;
     background: #fff;
     margin: 20px;
-   border-radius: 5px;
-   box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1);
 `
 const ImageContainer = styled.div`
     width: 100%;
 `
-const Image = styled.div`
-    background-image: url(${props => props?.img});
+const Image = styled.div.attrs(({ img }) => ({
+    style: {
+        backgroundImage: `url(${img})`
+    },
+}))`
     background-position: center;
     background-size: cover;
     width: 100%;

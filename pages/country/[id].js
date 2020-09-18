@@ -40,7 +40,7 @@ export async function getStaticPaths() {
     const countriesData = await axios.get(`${url}all`);
     const countries = await countriesData.data
 
-    const paths = countries.map((country) => ({
+    const paths = countries.filter(x => x["capital"] !== "").map((country) => ({
         params: { id: country["capital"] },
     }))
 

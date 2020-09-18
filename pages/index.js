@@ -45,7 +45,7 @@ export async function getStaticProps() {
     // will receive `posts` as a prop at build time
     return {
         props: {
-            countries,
+            countries: countries.filter(x => x["capital"] !== "" && x["capital"].indexOf(" ") >= 0),
         },
     }
 }
