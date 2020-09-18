@@ -41,7 +41,7 @@ export async function getStaticPaths() {
     const countries = await countriesData.data
 
     const paths = countries.map((country) => ({
-        params: { id: country.name },
+        params: { id: country["capital"] },
     }))
 
     return { paths, fallback: false }
@@ -50,7 +50,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
-    const countryData = await axios.get(`${url}name/${params.id}`);
+    const countryData = await axios.get(`${url}capital/${params.id}`);
     const country = await countryData.data
 
     // By returning { props: posts }, the Blog component

@@ -31,7 +31,7 @@ export default function Card(props) {
     const router = useRouter();
 
     return (
-        <Container style={{ cursor: "pointer" }} onClick={() => router.push(`/country/${props.country.name}`)}>
+        <Container style={{ cursor: "pointer" }} onClick={() => router.push(`/country/${props.country["capital"]}`)}>
             <ImageContainer>
                 <Image img={props.country["flag"]}  alt={props.country["flag"]}/>
             </ImageContainer>
