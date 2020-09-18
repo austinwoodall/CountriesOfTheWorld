@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import SearchInput from "../components/Filters";
 import CountryList from "../components/CountryList";
 
-export default function Home() {
+function Home() {
     return (
         <div className={styles.container}>
             <Head>
@@ -31,3 +31,5 @@ export default function Home() {
         </div>
     );
 }
+
+export default Home;
