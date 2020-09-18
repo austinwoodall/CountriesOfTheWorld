@@ -11,8 +11,8 @@ export default function CountryList() {
     }, [])
 
     const getCountries = async () => {
-        const countryData = await axios.get(url);
-       return countryData;
+        const countriesData = await axios.get(`${url}all`);
+       return countriesData;
     }
 
     console.log(countries)

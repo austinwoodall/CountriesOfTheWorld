@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {useRouter} from "next/router";
 
 const Container = styled.div`
     width: 250px;
@@ -22,9 +23,10 @@ const InfoContainer = styled.div`
 `
 
 export default function Card(props) {
+    const router = useRouter();
 
     return (
-        <Container>
+        <Container style={{ cursor: "pointer" }} onClick={() => router.push(`/country/${props.country.name}`)}>
             <ImageContainer>
                 <Image src={props.country["flag"]}  alt={props.country["flag"]}/>
             </ImageContainer>
